@@ -43,6 +43,11 @@ public class UserController {
         return response;
     }
 
+    /**
+     * 用户退出
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "logout.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session){
@@ -50,13 +55,18 @@ public class UserController {
         return ServerResponse.createBySuccess();
     }
 
+    /**
+     * 注册用户
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "register.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> register(User user){
         return iUserService.register(user);
     }
 
-
+    
     @RequestMapping(value = "check_valid.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> checkValid(String str,String type){
@@ -134,34 +144,4 @@ public class UserController {
         }
         return iUserService.getInformation(currentUser.getId());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
